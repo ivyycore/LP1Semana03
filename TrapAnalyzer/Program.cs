@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace TrapAnalyzer
 {
@@ -25,11 +26,13 @@ namespace TrapAnalyzer
         /// <returns>The player gear.</returns>
         private static PlayerGear ParseGear(string[] args)
         {
-            string[] gearused = new string [3]; // creates a matrix
+            PlayerGear gearused = PlayerGear.Helmet | PlayerGear.Shield | PlayerGear.Boots;
+            foreach (PlayerGear gear in Enum.GetValues(typeof(PlayerGear)))
+            {
+                gearused &= gear;
+            }
             return gearused;
-            Console.WriteLine("gearused");
         }
-    
 
         /// <summary>
         /// Can the player survive the trap given the gear it has?
@@ -37,21 +40,29 @@ namespace TrapAnalyzer
         /// <param name="trap">The trap the player falls into.</param>
         /// <param name="gear">The gear the player has.</param>
         /// <returns>Wether the player survived the trap or not.</returns>
-        ///private static bool CanSurviveTrap(TrapType trap, PlayerGear gear)
-        ///{
-            
-        ///}
+        private static bool CanSurviveTrap(TrapType trap, PlayerGear gear)
+        {
+            switch (trap)
+            {
+                case TrapType.FallingRocks:
+                    return (gear & PlayerGear.Helmet) == PlayerGear.Helmet;
+                case TrapType.SpinningBlades:
+                    return (gear & PlayerGear.Shield) == PlayerGear.Shield;
+                case TrapType.PoisonGas:
+                    return (gear & PlayerGear.Helmet) == PlayerGear.Helmet && (gear & PlayerGear.Shield) == PlayerGear.Shield;
+                case TrapType.LavaPit:
+                    return (gear & PlayerGear.Boots) == PlayerGear.Boots;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Display information on wether the player survived the trap or not.
         /// </summary>
         /// <param name="trap">The trap the player has fallen into.</param>
-        ///private static void DisplayResult(TrapType trap, bool survives)
-        ///{
-            // ////////// //
-            // CHANGE ME! //
-            // ////////// //
+        private static void DisplayResult(TrapType trap, bool survives)
+        {
 
-        ///}
+        }
     }
 }
