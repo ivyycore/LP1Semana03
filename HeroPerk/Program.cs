@@ -41,6 +41,8 @@ namespace HeroPerk
             if ((player & Perks.AutoHeal) != Perks.AutoHeal) Console.WriteLine("!Not gonna make it!");
                 }
             }
+        }
+    }
     
     [Flags]
     enum Perks
