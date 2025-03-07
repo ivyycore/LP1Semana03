@@ -25,9 +25,11 @@ namespace TrapAnalyzer
         /// <returns>The player gear.</returns>
         private static PlayerGear ParseGear(string[] args)
         {
-            string PlayerGear gear = args[]; 
-            int[] gear = new int [4];
+            string[] gearused = new string [3]; // creates a matrix
+            return gearused;
+            Console.WriteLine("gearused");
         }
+    
 
         /// <summary>
         /// Can the player survive the trap given the gear it has?
@@ -35,22 +37,21 @@ namespace TrapAnalyzer
         /// <param name="trap">The trap the player falls into.</param>
         /// <param name="gear">The gear the player has.</param>
         /// <returns>Wether the player survived the trap or not.</returns>
-        private static bool CanSurviveTrap(TrapType trap, PlayerGear gear)
-        {
-            // ////////// //
-            // CHANGE ME! //
-            // ////////// //
-        }
+        ///private static bool CanSurviveTrap(TrapType trap, PlayerGear gear)
+        ///{
+            
+        ///}
 
         /// <summary>
         /// Display information on wether the player survived the trap or not.
         /// </summary>
         /// <param name="trap">The trap the player has fallen into.</param>
-        private static void DisplayResult(TrapType trap, bool survives)
-        {
+        ///private static void DisplayResult(TrapType trap, bool survives)
+        ///{
             // ////////// //
             // CHANGE ME! //
             // ////////// //
-        }
+
+        ///}
     }
 }
