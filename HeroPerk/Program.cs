@@ -13,21 +13,32 @@ namespace HeroPerk
             {
                 switch(c)
                 {
-                    case 'warpshift': 
+                    case 'w': 
                         count[0]++;
                         break;
-                    case 'stealth': 
+                    case 's': 
                         count[1]++;
                         break;
-                    case 'autoheal': 
+                    case 'a': 
                         count[2]++;
                         break;
-                    case 'doublejump': 
+                    case 'd': 
                         count[3]++;
                         break;
                     default: 
                         Console.WriteLine($"!Unknown perk!");
                         return;
+
+            Perks player = 0; //new variable from the previous enum we did
+
+            if (count[0] % 2 != 0) player |= Perks.WarpShift; 
+            if (count[1] % 2 != 0) player |= Perks.AutoHeal;
+            if (count[2] % 2 != 0) player |= Perks.Stealth;
+            if (count[3] % 2 != 0) player |= Perks.DoubleJump;
+            if (player != 0) Console.WriteLine($"Player Perks: {player}");
+            if (player==0) Console.WriteLine("!No perks at all!");
+            if ((player & Perks.Stealth) == Perks.Stealth && (player & Perks.DoubleJump) == Perks.DoubleJump) Console.WriteLine("!Silent jumper!");
+            if ((player & Perks.AutoHeal) != Perks.AutoHeal) Console.WriteLine("!Not gonna make it!");
                 }
             }
     
